@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using newZymbalevskyiLab1WebApplication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace newZymbalevskyiLab1WebApplication.Controllers
 {
+    [Authorize(Roles = "admin, user")]
     public class CategoriesController : Controller
     {
         private readonly DblibraryContext _context;

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using newZymbalevskyiLab1WebApplication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace newZymbalevskyiLab1WebApplication.Controllers
 {
+    [Authorize(Roles = "admin, user")]
     public class SuppliersController : Controller
     {
         private readonly DblibraryContext _context;
