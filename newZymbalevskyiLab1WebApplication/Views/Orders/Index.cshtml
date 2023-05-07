@@ -1,0 +1,67 @@
+﻿@model IEnumerable<newZymbalevskyiLab1WebApplication.Order>
+
+@{
+    ViewData["Title"] = "Orders_of_user";
+}
+@*cc 5may 10 24*@
+<h1>Orders of @ViewBag.CustomerFirstName @ViewBag.CustomerLastName</h1>
+
+<p>
+    @*<a asp-action="Create">Create New</a>*@
+    @Html.ActionLink("Add new order", "Create", new {customerId = @ViewBag.CustomerId})
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Customer.Id)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit Order</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Order Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete Order</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
