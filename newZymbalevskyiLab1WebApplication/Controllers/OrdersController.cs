@@ -19,7 +19,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
         }
 
         // GET: Orders
-        //cc 5may 10 11
         public async Task<IActionResult> Index(int? id, string? firstName, string? lastName, string? phoneNumber, string? email, string? address)
         {
             /*var dblibraryContext = _context.Orders.Include(o => o.Customer);
@@ -55,7 +54,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             return View(order);
         }
 
-        //cc 5may 10 30
         // GET: Orders/Create
         public IActionResult Create(int customerId)
         {
@@ -76,7 +74,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //cc 5may 10 36
         public async Task<IActionResult> Create(int customerId, [Bind("Id,Date,Time,ProductId,ProductQuantity,ProductPrice,CustomerId")] Order order)
         {
             /*if (ModelState.IsValid)

@@ -40,7 +40,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             }
 
             //return View(customer);
-            // cc 5may 10 07
             return RedirectToAction("Index", "Orders", new { id = customer.Id, firstName = customer.FirstName, lastName = customer.LastName, phoneNumber = customer.PhoneNumber, email = customer.Email, address = customer.Address });
         }
 

@@ -9,16 +9,20 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
     {
         RoleManager<IdentityRole> _roleManager;
         UserManager<User> _userManager;
+
         public RolesController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
         }
+
         public IActionResult Index() => View(_roleManager.Roles.ToList());
+
         public IActionResult UserList() => View(_userManager.Users.ToList());
-        public async Task<IActionResult> Edit(int userId)
+
+        public async Task<IActionResult> Edit(string userId)
         {
-            User user = await _userManager.FindByIdAsync(Convert.ToString(userId));
+            User user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -34,10 +38,11 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             }
             return NotFound();
         }
+
         [HttpPost]
-        public async Task<IActionResult> Edit(int userId, List<string> roles)
+        public async Task<IActionResult> Edit(string userId, List<string> roles)
         {
-            User user = await _userManager.FindByIdAsync(Convert.ToString(userId));
+            User user = await _userManager.FindByIdAsync(userId);
             if (user != null)
             {
                 var userRoles = await _userManager.GetRolesAsync(user);
@@ -50,6 +55,5 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             }
             return NotFound();
         }
-
     }
 }

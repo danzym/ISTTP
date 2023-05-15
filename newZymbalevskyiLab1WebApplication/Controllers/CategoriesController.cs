@@ -38,9 +38,7 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             if (category == null)
             {
                 return NotFound();
-            }
-            //cc 5may 13 56
-            return RedirectToAction("Index", "Products", new { id = category.Id, name = category.Name, description = category.Description});
+            }            return RedirectToAction("Index", "Products", new { id = category.Id, name = category.Name, description = category.Description});
             //return View(category);
         }
 

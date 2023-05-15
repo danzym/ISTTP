@@ -2,8 +2,7 @@ using newZymbalevskyiLab1WebApplication;
 using Microsoft.EntityFrameworkCore;
 using newZymbalevskyiLab1WebApplication.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.Options;
-using DocumentFormat.OpenXml.Wordprocessing;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +16,8 @@ builder.Services.AddDbContext<IdentityContext>(option => option.UseSqlServer(
 	builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddControllersWithViews();
 builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+
+//builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -48,12 +49,20 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseAuthentication();
+
 app.UseRouting();
 
 app.UseAuthorization();
-
+//app.MapRazorPages();
+//Unable to find the required services. Please add all the required services by calling
+//'IServiceCollection.AddRazorPages' inside the call to 'ConfigureServices(...)'
+//in the application startup code
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+/*https://localhost:7237/Account/Login?ReturnUrl=%2FCustomers
+https://localhost:7237/Customers
+*/

@@ -19,7 +19,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
         }
 
         // GET: Products
-        //cc 5may 14 03
         //return RedirectToAction("Index", "Products", new { id = category.Id, name = category.Name, description = category.Description});
 
         public async Task<IActionResult> Index(int? id, string? name, string? description)
@@ -32,7 +31,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             ViewBag.CategoryDescription = description;
             var productsByCategory = _context.Products.Where(p => p.CategoryId == id).Include(p => p.Category).Include(p => p.Order).Include(p => p.Supplier);
             return View(await productsByCategory.ToListAsync());
-            // ????????????????????????????????????????????????????????
         }
 
         // GET: Products/Details/5
@@ -56,7 +54,6 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
             return View(product);
         }
 
-        //cc 5may 14 18
         // GET: Products/Create
         public IActionResult Create(int categoryId)
         {

@@ -9,7 +9,6 @@
 <p>
     <a asp-action="Create">Create New Category</a>
 </p>
-@*may7 1451*@
 <div style="margin-top:50px;">
     <h5>Choose Excel-file for downloading</h5>
     @using (Html.BeginForm("Import", "Categories", FormMethod.Post, new { enctype = "multipart/form-data", id = "frm-excel" }))

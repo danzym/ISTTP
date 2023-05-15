@@ -48,14 +48,14 @@ namespace newZymbalevskyiLab1WebApplication.Controllers
 		{
 			return View(new LoginViewModel { ReturnUrl = returnUrl });
 		}
+
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Login(LoginViewModel model)
 		{
 			if (ModelState.IsValid)
 			{
-				var result =
-				await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+				var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
 				if (result.Succeeded)
 				{
 					if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
